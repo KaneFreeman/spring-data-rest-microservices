@@ -1,0 +1,13 @@
+management.endpoints.web.base-path: /tickets/actuator
+
+# Eureka Configuration
+eureka:
+    client.enabled: true
+    instance:
+        nonSecurePortEnabled: false
+        hostname: localhost
+        nonSecurePort: 8052
+        prefer-ip-address: false
+        statusPageUrl: http://${eureka.hostname}:${eureka.instance.nonSecurePort}/tickets/actuator/info
+        healthCheckUrl: http://${eureka.hostname}:${eureka.instance.nonSecurePort}/tickets/actuator/health
+        homePageUrl: http://${eureka.hostname}:${eureka.instance.nonSecurePort}

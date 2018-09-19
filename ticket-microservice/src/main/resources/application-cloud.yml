@@ -1,0 +1,17 @@
+# Spring Cloud configuration
+eureka:
+  instance:
+    nonSecurePortEnabled: false
+    hostname: ${vcap.application.uris[0]}
+    prefer-ip-address: false
+    securePortEnabled: true
+    secure-port: 443
+    statusPageUrl: https://${eureka.hostname}:${eureka.instance.secure-port}/actuator/info
+    healthCheckUrl: https://${eureka.hostname}:${eureka.instance.secure-port}/actuator/health
+    homePageUrl: https://${eureka.hostname}:${eureka.instance.secure-port}/
+  client:
+    enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: ${vcap.services.eureka-test.credentials.url}

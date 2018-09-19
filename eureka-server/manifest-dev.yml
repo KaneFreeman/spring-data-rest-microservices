@@ -1,0 +1,6 @@
+applications:
+- name: eureka-server-test
+  instances: 1
+  memory: 1024MB
+  disk_quota: 512MB
+  buildpack: java_buildpack_offline

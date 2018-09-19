@@ -1,0 +1,13 @@
+# Eureka configuration
+eureka.instance.hostname: ${vcap.application.uris[0]}
+eureka.client.registerWithEureka: false
+eureka.client.fetchRegistry: false
+eureka.client.serviceUrl.defaultZone: https://${eureka.instance.hostname}/eureka/
+
+eureka:
+  instance:
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    statusPageUrl: https://${eureka.hostname}/info
+    healthCheckUrl: https://${eureka.hostname}/health
+    homePageUrl: https://${eureka.hostname}/

@@ -1,0 +1,39 @@
+server.port: 8052
+
+spring:
+    application:
+        name: api-gateway
+    http:
+        multipart:
+            max-file-size: 25MB
+            max-request-size: 25MB
+
+gateway:
+    allowedOrigins: localhost:4200
+    
+tickets-url: http://localhost:8050
+projects-url: http://localhost:8051
+
+zuul:
+    ignoredServices: "*"
+    ignoredHeaders: Access-Control-Allow-Credentials,Access-Control-Allow-Origin,Vary,X-Vcap-Request-Id
+    sensitiveHeaders: Cookie,Set-Cookie
+    host:
+        socket-timeout-millis: 30000
+    routes:
+        tickets-service:
+            path: /tickets/**
+            url: ${tickets-url}
+            stripPrefix: false
+        tickets-profile-service:
+            path: /profile/tickets/**
+            url: ${tickets-url}
+            stripPrefix: false
+        projects-service:
+            path: /projects/**
+            url: ${projects-url}
+            stripPrefix: false
+        projects-profile-service:
+            path: /profile/projects/**
+            url: ${projects-url}
+            stripPrefix: false
